@@ -1,110 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<style>
-    body {
-        margin: 0;
-        height: 100vh;
-        background-color: #f4f7fc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Login | KLNCE</title>
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            --primary-blue: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-soft: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --white: #ffffff;
+        }
 
-    .login-box {
-        background: #ffffff;
-        width: 400px;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        text-align: center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-    .logo-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 30px;
-    }
+        body {
+            background-color: var(--bg-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .logo-container img {
-        width: 90px;
-        height: auto;
-    }
+        /* Card Styling */
+        .login-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            text-align: center;
+        }
 
-    input[type="text"],
-    input[type="password"] {
-        width: 100%;
-        padding: 14px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        background: #f9f9f9;
-        font-size: 16px;
-    }
+        .logo-container {
+            margin-bottom: 24px;
+        }
 
-    .options {
-        display: flex;
-        align-items: center;
-        margin: 10px 0;
-        color: #333;
-        font-size: 14px;
-    }
+        .logo-container img {
+            width: 80px;
+            height: auto;
+            /* Optional: subtle shadow to make logo pop */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+        }
 
-    .options input {
-        margin-right: 8px;
-    }
+        h2 {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
 
-    button {
-        width: 100%;
-        padding: 14px;
-        background: #007bff;
-        border: none;
-        border-radius: 6px;
-        font-size: 18px;
-        cursor: pointer;
-        color: white;
-    }
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
 
-    button:hover {
-        background: #0056b3;
-    }
+        /* Form Styling */
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
 
-    .forgot {
-        text-align: center;
-        margin-top: 15px;
-        color: #007bff;
-        font-size: 14px;
-        cursor: pointer;
-    }
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            margin-left: 4px;
+        }
 
-    .forgot:hover {
-        text-decoration: underline;
-    }
-</style>
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background-color: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Row for Checkbox & Link */
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            font-size: 0.85rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: var(--primary-blue);
+        }
+
+        .forgot-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Button Styling */
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .login-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+
+        .footer-text {
+            margin-top: 32px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+    </style>
 </head>
 <body>
 
-<div class="login-box">
+    <div class="login-card">
+        <div class="logo-container">
+            <img src="" alt="College Logo">
+        </div>
+        
+        <h2>Student Portal</h2>
+        <p class="subtitle">Enter your credentials to access your account</p>
 
-    <!-- CENTERED LOGO -->
-    <div class="logo-container">
-        <img src="2736-removebg-preview.png" alt="College Logo">
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="e.g. 2024CS001" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#" class="forgot-link">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Login to Dashboard</button>
+        </form>
+
+        <p class="footer-text">© 2026 K.L.N. College of Engineering</p>
     </div>
-
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-
-    <div class="options">
-        <input type="checkbox"> Remember me
-    </div>
-
-    <button>Login</button>
-
-    <div class="forgot">Forgot Password?</div>
-</div>
 
 </body>
+</html>
 </html>
